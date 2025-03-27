@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Your Basket</h2>
+  <ul>
+    {% for item in cart_items %}
+      <li>{{ item.product.name }} - {{ item.quantity }} units
+        <a href="{% url 'remove_from_cart' item.product.id %}" class="btn btn-danger btn-sm">Delete</a>
+      </li>
+    {% empty %}
+      <li>No products in your cart.</li>
+    {% endfor %}
+  </ul>
+  <a href="/products/" class="btn btn-primary">Continue shopping</a>
+
+  {% if messages %}
+    <div class="alert alert-info" role="alert">
+      {% for message in messages %}
+        {{ message }}<br>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endblock %} 
