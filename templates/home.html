@@ -10,6 +10,21 @@
     </div>
 
     <div class="col-12 mb-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <form action="{% url 'products' %}" method="GET" class="mb-5">
+                    <div class="input-group input-group-lg shadow">
+                        {{ search_form.search }}
+                        <button class="btn btn-primary px-4" type="submit">
+                            <i class="bi bi-search me-2"></i>Search
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 mb-5">
         <h2 class="text-center mb-4">Our Categories</h2>
         <div class="row justify-content-center">
             {% for category in categories %}
@@ -20,7 +35,7 @@
                         <p class="card-text">
                             {{ category.products.count }} products available
                         </p>
-                        <a href="/products/?category={{ category.id }}" class="btn btn-primary">
+                        <a href="{% url 'products' %}?category={{ category.id }}" class="btn btn-primary">
                             View Products
                         </a>
                     </div>
